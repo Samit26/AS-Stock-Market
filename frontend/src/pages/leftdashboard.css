@@ -1,0 +1,60 @@
+.dash {
+  font-size: 34px;
+  color: #bec5c7;
+  font-weight: 600;
+}
+
+.stock-name {
+  padding-top: 20px;
+  font-weight: 700;
+  font-size: 17px;
+  margin-left: 2px;
+}
+
+.container1 {
+  /* background-color: bisque; */
+  height: 50px;
+  width: 100%;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+.price-container {
+  display: flex;
+  align-items: baseline;
+}
+
+.price {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.text {
+  margin-top: 10px;
+  height: 100%;
+}
+.span3 {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.price-difference-percentage {
+  margin-left: 30px;
+  background-color: lightgreen;
+  padding: 10px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  border-radius: 7px;
+}
+.price-difference-money {
+  margin-left: 10px;
+  background-color: lightgreen;
+  padding: 10px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  border-radius: 7px;
+}
+
+/* .moneyIcon {
+  padding-bottom: 7px;
+} */

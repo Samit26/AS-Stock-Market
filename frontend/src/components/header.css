@@ -10,10 +10,12 @@
   /* background-color: blue; */
   width: 50%;
   height: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .logo {
-  background-image: url("public/logo.png");
+  background-image: url("/logo.png");
   height: 63px;
   width: 80px;
   background-size: cover;
@@ -36,4 +38,44 @@
 
 .span1 {
   margin-right: 10px;
+}
+
+.span2 {
+  margin-left: 10px;
+  background-color: #e0e7e9;
+  padding: 10px;
+  font-weight: 600;
+  border-radius: 7px;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  margin-left: 200px;
+}
+
+.profile-name {
+  /* padding-top: 10px; */
+  font-weight: 600;
+  margin-left: 15px;
+}
+
+.profile-pic {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-image: url("https://play-lh.googleusercontent.com/3ha-TO-wWZA8IofnlU6tWsYJiBCYbqs8hvhB6BQnct1PgsYpAZhCPMKoYggHOX9z-1qM=w526-h296-rw");
+  background-size: cover;
+  margin-left: 20px;
+}
+
+.profile .line {
+  height: 30px;
+  width: 2px;
+  background-color: #e0e7e9;
+}
+
+.bell-icon {
+  font-size: 20px;
+  padding-right: 20px;
 }
