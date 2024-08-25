@@ -1,0 +1,1 @@
+pages/: Different pages of your application.
