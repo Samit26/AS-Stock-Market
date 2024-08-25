@@ -1,0 +1,24 @@
+.right-dashboard {
+  height: 100%;
+  width: 50%;
+  /* background-color: brown; */
+  border-bottom-right-radius: 25px;
+}
+
+.left-dashboard {
+  height: 100%;
+  width: 50%;
+  /* background-color: pink; */
+  border-bottom-left-radius: 25px;
+}
+
+.dashboard {
+  height: 90%;
+  width: 100%;
+  /* background-color: blueviolet; */
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  background-color: var(--bg-color-light);
+  display: flex;
+  justify-content: center;
+}
