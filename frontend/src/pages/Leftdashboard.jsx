@@ -63,15 +63,14 @@ const Leftdashboard = () => {
           <select
             name="Time"
             className="select-time"
+            defaultValue="day"
             onChange={(event) => {
               setTimeframe(event.target.value);
             }}
           >
             <option value="1minute">1min</option>
             <option value="30minute">30min</option>
-            <option value="day" selected={true}>
-              Daily
-            </option>
+            <option value="day">Daily</option>
             <option value="week">Weekly</option>
             <option value="month">Monthly</option>
           </select>

@@ -5,8 +5,6 @@ export const ApiData = createContext();
 const dataReducer = (chartData, action) => {
   switch (action.type) {
     case "SET_DATA":
-      console.log(action.payload);
-
       return [...chartData, action.payload];
     case "CLEAR_DATA":
       return (chartData = []);
@@ -102,14 +100,55 @@ const ApiDataProvider = ({ children }) => {
   }, [timeframe]);
 
   useEffect(() => {
-    if (initialData.length === 0 && toDate != null) {
+    if (
+      initialData.length === 0 &&
+      toDate != null &&
+      timeframe != "1minute" &&
+      timeframe != "30minute"
+    ) {
       fetch(
         `https://api.upstox.com/v2/historical-candle/NSE_EQ|INE476A01022/${timeframe}/${toDate}/${fromDate}`
       )
         .then((res) => res.json())
         .then((data1) => {
           const data2 = data1.data.candles;
-          console.log(data2);
+
+          const data3 = data2.sort((a, b) => new Date(a[0]) - new Date(b[0]));
+
+          const data4 = data3.map((item) => {
+            const date = new Date(item[0]);
+            const seconds = Math.floor(date.getTime() / 1000);
+            return {
+              time: seconds,
+              open: item[1],
+              high: item[2],
+              low: item[3],
+              close: item[4],
+            };
+          });
+
+          dispatch({
+            type: "CLEAR_DATA",
+          });
+
+          data4.forEach((dataPoint) => {
+            dispatch({
+              type: "SET_DATA",
+              payload: dataPoint,
+            });
+          });
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        });
+    } else if (timeframe === "1minute" || timeframe === "30minute") {
+      fetch(
+        `https://api.upstox.com/v2/historical-candle/intraday/NSE_EQ|INE476A01022/${timeframe}`
+      )
+        .then((res) => res.json())
+        .then((data1) => {
+          const data2 = data1.data.candles;
+
           const data3 = data2.sort((a, b) => new Date(a[0]) - new Date(b[0]));
 
           const data4 = data3.map((item) => {
