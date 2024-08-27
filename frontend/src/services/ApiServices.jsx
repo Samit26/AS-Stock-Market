@@ -1,15 +1,13 @@
-import { createContext, useEffect, useReducer } from "react";
+import { createContext, useEffect, useReducer, useState } from "react";
 
 export const ApiData = createContext();
 
 const dataReducer = (chartData, action) => {
   switch (action.type) {
-    case "ADD_DATA":
+    case "SET_DATA":
       return [...chartData, action.payload];
-    case "UPDATE_DATA":
-      return chartData.map((data) =>
-        data.time === action.payload.time ? action.payload : data
-      );
+    case "CLEAR_DATA":
+      return (chartData = []);
     default:
       return chartData;
   }
@@ -17,124 +15,176 @@ const dataReducer = (chartData, action) => {
 
 // eslint-disable-next-line react/prop-types
 const ApiDataProvider = ({ children }) => {
-  const initialData = [
-    {
-      time: "2024-08-01",
-      open: 3015.4,
-      high: 3022.65,
-      low: 2996.2,
-      close: 2999.95,
-    },
-    {
-      time: "2024-08-02",
-      open: 3001.3,
-      high: 3011.8,
-      low: 2981.35,
-      close: 2995.1,
-    },
-    {
-      time: "2024-08-03",
-      open: 2986.25,
-      high: 3007.65,
-      low: 2981,
-      close: 2993.35,
-    },
-    // {
-    //   time: "2024-08-04",
-    //   open: 2967.45,
-    //   high: 2996.35,
-    //   low: 2963,
-    //   close: 2977.2,
-    // },
-    {
-      time: "2024-08-05",
-      open: 2933.35,
-      high: 2961,
-      low: 2916.65,
-      close: 2956.15,
-    },
-    {
-      time: "2024-08-06",
-      open: 2926.5,
-      high: 2943.4,
-      low: 2908,
-      close: 2922.65,
-    },
-    {
-      time: "2024-08-07",
-      open: 2925,
-      high: 2939.9,
-      low: 2915.6,
-      close: 2926.9,
-    },
-    {
-      time: "2024-08-08",
-      open: 2932.4,
-      high: 2946,
-      low: 2916.2,
-      close: 2921.5,
-    },
-    {
-      time: "2024-08-09",
-      open: 2927.7,
-      high: 2954.05,
-      low: 2912.05,
-      close: 2948.3,
-    },
-    {
-      time: "2024-08-10",
-      open: 2923,
-      high: 2927.2,
-      low: 2892.25,
-      close: 2895.5,
-    },
-    {
-      time: "2024-08-11",
-      open: 2945.75,
-      high: 2946.1,
-      low: 2923,
-      close: 2929.2,
-    },
-    {
-      time: "2024-08-12",
-      open: 2901.15,
-      high: 2955.35,
-      low: 2901.15,
-      close: 2911.8,
-    },
-    {
-      time: "2024-08-13",
-      open: 2950.05,
-      high: 2960.1,
-      low: 2865.8,
-      close: 2894.7,
-    },
-    {
-      time: "2024-08-21",
-      open: 2985,
-      high: 3015.85,
-      low: 2980,
-      close: 2996.55,
-    },
-  ];
+  const initialData = [];
 
   const [chartData, dispatch] = useReducer(dataReducer, initialData);
+  const [timeframe, setTimeframe] = useState("day");
+  const [toDate, setToDate] = useState(null);
+  const [fromDate, setFromDate] = useState(null);
+  useEffect(() => {
+    if (timeframe === "day") {
+      const yesterday = () => {
+        let d = new Date();
+        d.setDate(d.getDate() - 1);
+        return d;
+      };
+
+      const from = () => {
+        let d = new Date();
+        d.setDate(d.getDate() - 25);
+        return d;
+      };
+      setFromDate(from().toISOString().split("T")[0]);
+      setToDate(yesterday().toISOString().split("T")[0]);
+    }
+    if (timeframe === "week") {
+      const yesterday = () => {
+        let d = new Date();
+        d.setDate(d.getDate() - 1);
+        return d;
+      };
+
+      const from = () => {
+        let d = new Date();
+        d.setDate(d.getDate() - 120);
+        return d;
+      };
+      setFromDate(from().toISOString().split("T")[0]);
+      setToDate(yesterday().toISOString().split("T")[0]);
+    }
+    if (timeframe === "month") {
+      const yesterday = () => {
+        let d = new Date();
+        d.setDate(d.getDate() - 1);
+        return d;
+      };
+
+      const from = () => {
+        let d = new Date();
+        d.setDate(d.getDate() - 365);
+        return d;
+      };
+      setFromDate(from().toISOString().split("T")[0]);
+      setToDate(yesterday().toISOString().split("T")[0]);
+    }
+    if (timeframe === "30minute") {
+      const yesterday = () => {
+        let d = new Date();
+        d.setDate(d.getDate() - 1);
+        return d;
+      };
+
+      const from = () => {
+        let d = new Date();
+        d.setDate(d.getDate() - 4);
+        return d;
+      };
+      setFromDate(from().toISOString().split("T")[0]);
+      setToDate(yesterday().toISOString().split("T")[0]);
+    }
+    if (timeframe === "1minute") {
+      const yesterday = () => {
+        let d = new Date();
+        d.setDate(d.getDate() - 1);
+        return d;
+      };
+
+      const from = () => {
+        let d = new Date();
+        d.setDate(d.getDate() - 2);
+        return d;
+      };
+      setFromDate(from().toISOString().split("T")[0]);
+      setToDate(yesterday().toISOString().split("T")[0]);
+    }
+  }, [timeframe]);
 
   useEffect(() => {
-    fetch(
-      "https://api.upstox.com/v2/historical-candle/NSE_EQ|INE476A01022/day/2024-08-25/2024-08-15"
-    )
-      .then((res) => res.json())
-      .then((data1) => {
-        const data2 = data1.data.candles;
-        console.log(data2.reverse());
-      })
-      .catch((error) => console.error("Error fetching data:", error));
-  }, []);
+    if (
+      initialData.length === 0 &&
+      toDate != null &&
+      timeframe != "1minute" &&
+      timeframe != "30minute"
+    ) {
+      fetch(
+        `https://api.upstox.com/v2/historical-candle/NSE_EQ|INE476A01022/${timeframe}/${toDate}/${fromDate}`
+      )
+        .then((res) => res.json())
+        .then((data1) => {
+          const data2 = data1.data.candles;
 
-  const value = 10;
+          const data3 = data2.sort((a, b) => new Date(a[0]) - new Date(b[0]));
+
+          const data4 = data3.map((item) => {
+            const date = new Date(item[0]);
+            const seconds = Math.floor(date.getTime() / 1000);
+            return {
+              time: seconds,
+              open: item[1],
+              high: item[2],
+              low: item[3],
+              close: item[4],
+            };
+          });
+
+          dispatch({
+            type: "CLEAR_DATA",
+          });
+
+          data4.forEach((dataPoint) => {
+            dispatch({
+              type: "SET_DATA",
+              payload: dataPoint,
+            });
+          });
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        });
+    } else if (timeframe === "1minute" || timeframe === "30minute") {
+      fetch(
+        `https://api.upstox.com/v2/historical-candle/intraday/NSE_EQ|INE476A01022/${timeframe}`
+      )
+        .then((res) => res.json())
+        .then((data1) => {
+          const data2 = data1.data.candles;
+
+          const data3 = data2.sort((a, b) => new Date(a[0]) - new Date(b[0]));
+
+          const data4 = data3.map((item) => {
+            const date = new Date(item[0]);
+            const seconds = Math.floor(date.getTime() / 1000);
+            return {
+              time: seconds,
+              open: item[1],
+              high: item[2],
+              low: item[3],
+              close: item[4],
+            };
+          });
+
+          dispatch({
+            type: "CLEAR_DATA",
+          });
+
+          data4.forEach((dataPoint) => {
+            dispatch({
+              type: "SET_DATA",
+              payload: dataPoint,
+            });
+          });
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [initialData.length, toDate, fromDate]);
+
   return (
-    <ApiData.Provider value={{ value, chartData }}>{children}</ApiData.Provider>
+    <ApiData.Provider value={{ chartData, setTimeframe }}>
+      {children}
+    </ApiData.Provider>
   );
 };
 

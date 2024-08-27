@@ -7,7 +7,7 @@ import { ApiData } from "../services/ApiServices";
 
 const Leftdashboard = () => {
   const firstChartContainerRef = useRef(null);
-  const { chartData } = useContext(ApiData);
+  const { chartData, setTimeframe } = useContext(ApiData);
 
   useEffect(() => {
     if (firstChartContainerRef.current) {
@@ -60,14 +60,19 @@ const Leftdashboard = () => {
           </span>
         </div>
         <div className="time-span">
-          <select name="Time" className="select-time">
-            <option value="60min">Last 60min</option>
-            <option value="45min">Last 45min</option>
-            <option value="30min" selected={true}>
-              Last 30min
-            </option>
-            <option value="15min">Last 15min</option>
-            <option value="5min">Last 5min</option>
+          <select
+            name="Time"
+            className="select-time"
+            defaultValue="day"
+            onChange={(event) => {
+              setTimeframe(event.target.value);
+            }}
+          >
+            <option value="1minute">1min</option>
+            <option value="30minute">30min</option>
+            <option value="day">Daily</option>
+            <option value="week">Weekly</option>
+            <option value="month">Monthly</option>
           </select>
         </div>
       </div>
