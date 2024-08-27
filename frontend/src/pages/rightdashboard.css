@@ -1,0 +1,154 @@
+.companiesHolder {
+  height: 100%;
+  width: 100%;
+}
+
+.companiesMainContainer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.companiesLeftContainer {
+  width: 33%;
+  height: 100%;
+  padding: 0.5vmax;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 0.5vmax;
+}
+
+.reliance {
+  height: 62%;
+  width: 100%;
+  background-color: #00e2ff;
+  border-radius: 1vmax;
+}
+
+.tcs {
+  height: 38%;
+  width: 100%;
+  background-color: #00e2ff;
+  border-radius: 1vmax;
+}
+
+.companiesRightContainer {
+  width: 67%;
+  height: 100%;
+  padding: 0.5vmax 0;
+}
+
+.row1 {
+  height: 25%;
+  width: 100%;
+}
+
+.hdfcBank {
+  height: 100%;
+  width: 100%;
+  border-radius: 1vmax;
+  background-color: #eaf1f3;
+}
+
+.row2 {
+  height: 35%;
+  width: 100%;
+  padding: 0.5vmax 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5vmax;
+}
+
+.bhartiAirtel {
+  height: 100%;
+  width: 60%;
+  background-color: #eaf1f3;
+  border-radius: 1vmax;
+}
+
+.iciciBank {
+  height: 100%;
+  width: 40%;
+  background-color: #eaf1f3;
+  border-radius: 1vmax;
+}
+
+.row3 {
+  height: 40%;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 0.5vmax;
+}
+
+.infosys {
+  width: 40%;
+  height: 100%;
+  background-color: #eaf1f3;
+  border-radius: 1vmax;
+}
+.sbi {
+  width: 35%;
+  height: 100%;
+  background-color: #eaf1f3;
+  border-radius: 1vmax;
+}
+.hul {
+  width: 28%;
+  height: 100%;
+  background-color: #eaf1f3;
+  border-radius: 1vmax;
+}
+
+.reliance,
+.tcs,
+.hdfcBank,
+.bhartiAirtel,
+.iciciBank,
+.infosys,
+.sbi,
+.hul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1vmax;
+  cursor: pointer;
+}
+
+.reliance:hover,
+.tcs:hover,
+.hdfcBank:hover,
+.bhartiAirtel:hover,
+.iciciBank:hover,
+.infosys:hover,
+.sbi:hover,
+.hul:hover {
+  transform: scale(1.03);
+  transition: ease-in-out 0.3s;
+}
+
+.name h1 {
+  font-size: 1.2vmax;
+  color: black;
+}
+
+.name {
+  font-weight: 600;
+  color: #757879;
+}
+
+.price-right {
+  font-size: 1vmax;
+  font-weight: 600;
+}
+
+.price-right h6 {
+  font-size: 0.8vmax;
+  font-weight: 600;
+}

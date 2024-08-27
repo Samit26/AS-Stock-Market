@@ -1,6 +1,12 @@
 import "./rightdashboard.css";
+import CompaniesHolder from "../components/CompaniesHolder";
+
 const Rightdashboard = () => {
-  return <>{/* Aache se kaam karna akash  */}</>;
+  return (
+    <>
+      <CompaniesHolder />
+    </>
+  );
 };
 
 export default Rightdashboard;
