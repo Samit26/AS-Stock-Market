@@ -2,6 +2,7 @@ import "./leftdashboard.css";
 import { useContext, useEffect, useRef } from "react";
 import { createChart } from "lightweight-charts";
 import { FaRupeeSign } from "react-icons/fa";
+import { FaArrowUpLong } from "react-icons/fa6";
 import { MdOutlineKeyboardDoubleArrowUp } from "react-icons/md";
 import { ApiData } from "../services/ApiServices";
 
@@ -85,9 +86,26 @@ const Leftdashboard = () => {
         </div>
       </div>
       <div
+        className="chart"
         ref={firstChartContainerRef}
         style={{ width: "667px", height: "220px" }}
       ></div>
+      <div className="stock-details">
+        <div className="market-cap">
+          <div>Market Cap. (in Cr. ₹)</div>
+          <div className="stock-data">20,46,793.32</div>
+        </div>
+        <div className="pe-ratio">
+          <div>PE Ratio</div>
+          <div className="stock-data">29.40</div>
+        </div>
+        <div className="profit-1yr">
+          <div>Last 1 year Return (in %)</div>
+          <div className="stock-data">
+            22.80 <FaArrowUpLong />
+          </div>
+        </div>
+      </div>
     </>
   );
 };
