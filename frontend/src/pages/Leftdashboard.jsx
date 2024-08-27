@@ -7,7 +7,15 @@ import { ApiData } from "../services/ApiServices";
 
 const Leftdashboard = () => {
   const firstChartContainerRef = useRef(null);
-  const { chartData, setTimeframe } = useContext(ApiData);
+
+  const {
+    chartData,
+    setTimeframe,
+    difference,
+    differencePercentage,
+    marketOpenPriceX,
+    latestPrice,
+  } = useContext(ApiData);
 
   useEffect(() => {
     if (firstChartContainerRef.current) {
@@ -42,21 +50,21 @@ const Leftdashboard = () => {
   return (
     <>
       <div className="dash">Dashboard</div>
-      <div className="stock-name">Relience Group</div>
+      <div className="stock-name">Canara Bank</div>
       <div className="container1">
         <div className="price-container">
           <div className="price">
             <FaRupeeSign className="moneyIcon" />
-            <span className="text">64,314.</span>
-            <span className="span3">74</span>
+            <span className="text">{Math.floor(latestPrice)}</span>
+            <span className="span3">{marketOpenPriceX}</span>
           </div>
           <span className="price-difference-percentage ">
             <MdOutlineKeyboardDoubleArrowUp />
-            17.3%
+            {differencePercentage + "%"}
           </span>
           <span className="price-difference-money">
             <FaRupeeSign className="moneyIcon" />
-            300
+            {difference}
           </span>
         </div>
         <div className="time-span">

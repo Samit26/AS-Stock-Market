@@ -16,11 +16,26 @@ const dataReducer = (chartData, action) => {
 // eslint-disable-next-line react/prop-types
 const ApiDataProvider = ({ children }) => {
   const initialData = [];
-
+  const [difference, setDifference] = useState(null);
+  const [differencePercentage, setDifferencePercentage] = useState(null);
   const [chartData, dispatch] = useReducer(dataReducer, initialData);
   const [timeframe, setTimeframe] = useState("day");
   const [toDate, setToDate] = useState(null);
   const [fromDate, setFromDate] = useState(null);
+  const [marketOpenPrice, setMarketOpenPrice] = useState(null);
+  const [marketOpenPriceX, setMarketOpenPriceX] = useState(null);
+  const [latestPrice, setLatestPrice] = useState(null);
+
+  useEffect(() => {
+    if (marketOpenPrice != null && latestPrice != null) {
+      const diff = marketOpenPrice - latestPrice;
+      const diff2 = diff.toFixed(2);
+      setDifference(diff2);
+      const diffPer = (diff / marketOpenPrice) * 100;
+      const diffPer2 = diffPer.toFixed(2);
+      setDifferencePercentage(diffPer2);
+    }
+  }, [marketOpenPrice, latestPrice]);
   useEffect(() => {
     if (timeframe === "day") {
       const yesterday = () => {
@@ -82,6 +97,7 @@ const ApiDataProvider = ({ children }) => {
       setFromDate(from().toISOString().split("T")[0]);
       setToDate(yesterday().toISOString().split("T")[0]);
     }
+
     if (timeframe === "1minute") {
       const yesterday = () => {
         let d = new Date();
@@ -98,6 +114,57 @@ const ApiDataProvider = ({ children }) => {
       setToDate(yesterday().toISOString().split("T")[0]);
     }
   }, [timeframe]);
+
+  if (marketOpenPrice === null) {
+    fetch(
+      `https://api.upstox.com/v2/historical-candle/intraday/NSE_EQ|INE476A01022/30minute`
+    )
+      .then((res) => res.json())
+      .then((data1) => {
+        const data2 = data1.data.candles;
+        const data3 = data2.sort((a, b) => new Date(a[0]) - new Date(b[0]));
+        const data4 = data3[0][1];
+
+        setMarketOpenPrice(data4);
+      });
+  }
+
+  if (latestPrice === null) {
+    fetch(
+      `https://api.upstox.com/v2/historical-candle/intraday/NSE_EQ|INE476A01022/1minute`
+    )
+      .then((res) => res.json())
+      .then((data1) => {
+        const data2 = data1.data.candles;
+        const data3 = data2.sort((a, b) => new Date(a[0]) - new Date(b[0]));
+        let i = data3.length - 1;
+        const data4 = data3[i][4];
+
+        const decimal = data4 % 1;
+        const decimalS = decimal.toFixed(2).substring(1);
+        setMarketOpenPriceX(decimalS);
+        setLatestPrice(data4);
+      });
+  }
+
+  setInterval(() => {
+    if (latestPrice === null) {
+      fetch(
+        `https://api.upstox.com/v2/historical-candle/intraday/NSE_EQ|INE476A01022/1minute`
+      )
+        .then((res) => res.json())
+        .then((data1) => {
+          const data2 = data1.data.candles;
+          const data3 = data2.sort((a, b) => new Date(a[0]) - new Date(b[0]));
+          let i = data3.length - 1;
+          const data4 = data3[i][4];
+          const decimal = data4 % 1;
+          const decimalS = decimal.toFixed(2).substring(1);
+          setMarketOpenPriceX(decimalS);
+          setLatestPrice(Math.floor(data4));
+        });
+    }
+  }, 60000);
 
   useEffect(() => {
     if (
@@ -178,11 +245,22 @@ const ApiDataProvider = ({ children }) => {
           console.error("Error fetching data:", error);
         });
     }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialData.length, toDate, fromDate]);
 
   return (
-    <ApiData.Provider value={{ chartData, setTimeframe }}>
+    <ApiData.Provider
+      value={{
+        chartData,
+        setTimeframe,
+        marketOpenPrice,
+        marketOpenPriceX,
+        latestPrice,
+        difference,
+        differencePercentage,
+      }}
+    >
       {children}
     </ApiData.Provider>
   );
