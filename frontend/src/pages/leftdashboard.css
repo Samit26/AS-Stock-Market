@@ -17,15 +17,18 @@
   width: 100%;
   margin-top: 10px;
   display: flex;
-  align-items: center;
+
+  /* align-items: center; */
 }
 .price-container {
   display: flex;
-  align-items: baseline;
+  /* align-items: baseline; */
 }
 
 .price {
-  font-size: 28px;
+  display: flex;
+  align-items: center;
+  font-size: 32px;
   font-weight: 700;
 }
 
@@ -36,21 +39,32 @@
 .span3 {
   font-weight: 700;
   font-size: 18px;
+  padding-top: 18px;
 }
 
 .price-difference-percentage {
+  display: flex;
+  align-items: center;
   margin-left: 30px;
   background-color: lightgreen;
   padding: 10px;
   padding-top: 0px;
+  margin-top: 15px;
   padding-bottom: 0px;
   border-radius: 7px;
+  height: 30px;
+  width: auto;
 }
 .price-difference-money {
+  display: flex;
+  align-items: center;
   margin-left: 10px;
+  margin-top: 15px;
   background-color: lightgreen;
   padding: 10px;
   padding-top: 0px;
+  height: 30px;
+  width: auto;
   padding-bottom: 0px;
   border-radius: 7px;
 }
@@ -58,3 +72,27 @@
 /* .moneyIcon {
   padding-bottom: 7px;
 } */
+
+.time-span {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.select-time {
+  margin-top: 10px;
+  font-size: 13px;
+  border-radius: 10px;
+  /* width: 145px; */
+  height: 40px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.chart {
+  width: 100%;
+  height: 40%;
+  padding: 0;
+  background-color: darkorange;
+}

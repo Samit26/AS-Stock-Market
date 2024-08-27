@@ -1,13 +1,16 @@
 import "./App.css";
 import Header from "./components/Header";
 import Dashboard from "./pages/Dashboard";
+import ApiDataProvider from "./services/ApiServices";
 
 function App() {
   return (
-    <div className="container  outer-box">
-      <Header />
-      <Dashboard />
-    </div>
+    <ApiDataProvider>
+      <div className="container  outer-box">
+        <Header />
+        <Dashboard />
+      </div>
+    </ApiDataProvider>
   );
 }
 
