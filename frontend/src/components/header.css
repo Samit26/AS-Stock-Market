@@ -38,9 +38,11 @@
 
 .span1 {
   margin-right: 10px;
+  cursor: pointer;
 }
 
 .span2 {
+  cursor: pointer;
   margin-left: 10px;
   background-color: #e0e7e9;
   padding: 10px;
@@ -69,6 +71,11 @@
   margin-left: 20px;
 }
 
+.profile-name,
+.profile-pic {
+  cursor: pointer;
+}
+
 .profile .line {
   height: 30px;
   width: 2px;
@@ -76,6 +83,7 @@
 }
 
 .bell-icon {
+  cursor: pointer;
   font-size: 20px;
   padding-right: 20px;
 }
