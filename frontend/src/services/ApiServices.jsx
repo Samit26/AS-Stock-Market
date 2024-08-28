@@ -25,10 +25,12 @@ const ApiDataProvider = ({ children }) => {
   const [marketOpenPrice, setMarketOpenPrice] = useState(null);
   const [marketOpenPriceX, setMarketOpenPriceX] = useState(null);
   const [latestPrice, setLatestPrice] = useState(null);
+  const [stockChange, setStockChange] = useState("NSE_EQ|INE476A01022");
+  const [stockName, setStockName] = useState("Canara Bank");
 
   useEffect(() => {
     if (marketOpenPrice != null && latestPrice != null) {
-      const diff = marketOpenPrice - latestPrice;
+      const diff = latestPrice - marketOpenPrice;
       const diff2 = diff.toFixed(2);
       setDifference(diff2);
       const diffPer = (diff / marketOpenPrice) * 100;
@@ -114,24 +116,37 @@ const ApiDataProvider = ({ children }) => {
       setToDate(yesterday().toISOString().split("T")[0]);
     }
   }, [timeframe]);
+  useEffect(() => {
+    const yesterday = () => {
+      let d = new Date();
+      d.setDate(d.getDate() - 1);
+      return d;
+    };
 
-  if (marketOpenPrice === null) {
+    const from = () => {
+      let d = new Date();
+      d.setDate(d.getDate() - 2);
+      return d;
+    };
+    const f = from().toISOString().split("T")[0];
+    const y = yesterday().toISOString().split("T")[0];
     fetch(
-      `https://api.upstox.com/v2/historical-candle/intraday/NSE_EQ|INE476A01022/30minute`
+      `https://api.upstox.com/v2/historical-candle/${stockChange}/${timeframe}/${y}/${f}`
     )
       .then((res) => res.json())
       .then((data1) => {
         const data2 = data1.data.candles;
         const data3 = data2.sort((a, b) => new Date(a[0]) - new Date(b[0]));
-        const data4 = data3[0][1];
-
+        let i = data3.length - 1;
+        const data4 = data3[i][4];
+        // console.log(data4);
         setMarketOpenPrice(data4);
       });
-  }
+  }, [stockChange, marketOpenPrice]);
 
-  if (latestPrice === null) {
+  useEffect(() => {
     fetch(
-      `https://api.upstox.com/v2/historical-candle/intraday/NSE_EQ|INE476A01022/1minute`
+      `https://api.upstox.com/v2/historical-candle/intraday/${stockChange}/1minute`
     )
       .then((res) => res.json())
       .then((data1) => {
@@ -145,26 +160,24 @@ const ApiDataProvider = ({ children }) => {
         setMarketOpenPriceX(decimalS);
         setLatestPrice(data4);
       });
-  }
+  }, [stockChange, latestPrice]);
 
-  setInterval(() => {
-    if (latestPrice === null) {
-      fetch(
-        `https://api.upstox.com/v2/historical-candle/intraday/NSE_EQ|INE476A01022/1minute`
-      )
-        .then((res) => res.json())
-        .then((data1) => {
-          const data2 = data1.data.candles;
-          const data3 = data2.sort((a, b) => new Date(a[0]) - new Date(b[0]));
-          let i = data3.length - 1;
-          const data4 = data3[i][4];
-          const decimal = data4 % 1;
-          const decimalS = decimal.toFixed(2).substring(1);
-          setMarketOpenPriceX(decimalS);
-          setLatestPrice(Math.floor(data4));
-        });
-    }
-  }, 60000);
+  // setInterval(() => {
+  //   fetch(
+  //     `https://api.upstox.com/v2/historical-candle/intraday/${stockChange}/1minute`
+  //   )
+  //     .then((res) => res.json())
+  //     .then((data1) => {
+  //       const data2 = data1.data.candles;
+  //       const data3 = data2.sort((a, b) => new Date(a[0]) - new Date(b[0]));
+  //       let i = data3.length - 1;
+  //       const data4 = data3[i][4];
+  //       const decimal = data4 % 1;
+  //       const decimalS = decimal.toFixed(2).substring(1);
+  //       setMarketOpenPriceX(decimalS);
+  //       setLatestPrice(Math.floor(data4));
+  //     });
+  // }, 6000);
 
   useEffect(() => {
     if (
@@ -174,7 +187,7 @@ const ApiDataProvider = ({ children }) => {
       timeframe != "30minute"
     ) {
       fetch(
-        `https://api.upstox.com/v2/historical-candle/NSE_EQ|INE476A01022/${timeframe}/${toDate}/${fromDate}`
+        `https://api.upstox.com/v2/historical-candle/${stockChange}/${timeframe}/${toDate}/${fromDate}`
       )
         .then((res) => res.json())
         .then((data1) => {
@@ -210,7 +223,7 @@ const ApiDataProvider = ({ children }) => {
         });
     } else if (timeframe === "1minute" || timeframe === "30minute") {
       fetch(
-        `https://api.upstox.com/v2/historical-candle/intraday/NSE_EQ|INE476A01022/${timeframe}`
+        `https://api.upstox.com/v2/historical-candle/intraday/${stockChange}/${timeframe}`
       )
         .then((res) => res.json())
         .then((data1) => {
@@ -247,7 +260,7 @@ const ApiDataProvider = ({ children }) => {
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [initialData.length, toDate, fromDate]);
+  }, [initialData.length, toDate, fromDate, stockChange]);
 
   return (
     <ApiData.Provider
@@ -259,6 +272,9 @@ const ApiDataProvider = ({ children }) => {
         latestPrice,
         difference,
         differencePercentage,
+        setStockChange,
+        setStockName,
+        stockName,
       }}
     >
       {children}

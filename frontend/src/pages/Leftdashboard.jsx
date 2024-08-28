@@ -3,11 +3,15 @@ import { useContext, useEffect, useRef } from "react";
 import { createChart } from "lightweight-charts";
 import { FaRupeeSign } from "react-icons/fa";
 import { FaArrowUpLong } from "react-icons/fa6";
-import { MdOutlineKeyboardDoubleArrowUp } from "react-icons/md";
+import {
+  MdOutlineKeyboardDoubleArrowUp,
+  MdOutlineKeyboardDoubleArrowDown,
+} from "react-icons/md";
 import { ApiData } from "../services/ApiServices";
 
 const Leftdashboard = () => {
   const firstChartContainerRef = useRef(null);
+  let isNegativeDifference;
 
   const {
     chartData,
@@ -16,6 +20,7 @@ const Leftdashboard = () => {
     differencePercentage,
     marketOpenPriceX,
     latestPrice,
+    stockName,
   } = useContext(ApiData);
 
   useEffect(() => {
@@ -48,10 +53,12 @@ const Leftdashboard = () => {
     }
   }, [chartData]);
 
+  isNegativeDifference = difference < 0;
+
   return (
     <>
       <div className="dash">Dashboard</div>
-      <div className="stock-name">Canara Bank</div>
+      <div className="stock-name">{stockName}</div>
       <div className="container1">
         <div className="price-container">
           <div className="price">
@@ -59,11 +66,28 @@ const Leftdashboard = () => {
             <span className="text">{Math.floor(latestPrice)}</span>
             <span className="span3">{marketOpenPriceX}</span>
           </div>
-          <span className="price-difference-percentage ">
-            <MdOutlineKeyboardDoubleArrowUp />
+          <span
+            className="price-difference-percentage"
+            style={{
+              backgroundColor: isNegativeDifference ? "#EF5350" : "lightgreen",
+              color: isNegativeDifference ? "white" : "black",
+            }}
+          >
+            {isNegativeDifference ? (
+              <MdOutlineKeyboardDoubleArrowDown />
+            ) : (
+              <MdOutlineKeyboardDoubleArrowUp />
+            )}
+
             {differencePercentage + "%"}
           </span>
-          <span className="price-difference-money">
+          <span
+            className="price-difference-money"
+            style={{
+              backgroundColor: isNegativeDifference ? "#EF5350" : "lightgreen",
+              color: isNegativeDifference ? "white" : "black",
+            }}
+          >
             <FaRupeeSign className="moneyIcon" />
             {difference}
           </span>
