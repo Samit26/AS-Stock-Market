@@ -22,10 +22,14 @@
 }
 .price-container {
   display: flex;
+  width: 60%;
+  /* background-color: antiquewhite; */
   /* align-items: baseline; */
 }
 
 .price {
+  /* background-color: yellow; */
+  width: 35%;
   display: flex;
   align-items: center;
   font-size: 32px;
@@ -44,7 +48,9 @@
 
 .price-difference-percentage {
   display: flex;
+  justify-content: center;
   align-items: center;
+  gap: 0.2vmax;
   margin-left: 30px;
   background-color: lightgreen;
   padding: 10px;
@@ -53,18 +59,20 @@
   padding-bottom: 0px;
   border-radius: 7px;
   height: 30px;
-  width: auto;
+  width: 25%;
 }
 .price-difference-money {
   display: flex;
+  justify-content: center;
   align-items: center;
+  gap: 0.2vmax;
   margin-left: 10px;
   margin-top: 15px;
   background-color: lightgreen;
   padding: 10px;
   padding-top: 0px;
   height: 30px;
-  width: auto;
+  width: 25%;
   padding-bottom: 0px;
   border-radius: 7px;
 }
@@ -74,7 +82,7 @@
 } */
 
 .time-span {
-  width: 100%;
+  width: 40%;
   display: flex;
   justify-content: end;
   align-items: center;
