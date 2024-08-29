@@ -11,16 +11,13 @@ const Header = () => {
           StockMarket.<span>io</span>
         </div>
         <div className="navigation">
-          <span className="span1">Dashboard</span>
-          <span className="span1">Portfolio</span>
+          <span className="navOption active">Dashboard</span>
+          <span className="navOption">Behind the Code || Code & Crew</span>
         </div>
       </div>
       <div className="rightSide">
-        <div className="navigation">
-          <span className="span1">Saved</span>
-          <span className="span2">
-            Generate <BsStars />
-          </span>
+        <div className="generativeAi">
+          Generate <BsStars />
         </div>
         <div className="profile">
           <div className="bell-icon">
