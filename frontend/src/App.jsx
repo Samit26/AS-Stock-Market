@@ -9,6 +9,7 @@ function App() {
     <ApiDataProvider>
       <div className="container  outer-box">
         <Header />
+
         <Dashboard />
       </div>
     </ApiDataProvider>

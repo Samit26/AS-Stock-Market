@@ -255,14 +255,14 @@ function Companies() {
               <h6>{companiesData[5].percentage}</h6>
             </div>
           </div>
-          <div className="sbi">
-            <div
-              className="name"
-              onClick={() => {
-                setStockChange(companiesData[6].code);
-                setStockName(companiesData[6].name);
-              }}
-            >
+          <div
+            className="sbi"
+            onClick={() => {
+              setStockChange(companiesData[6].code);
+              setStockName(companiesData[6].name);
+            }}
+          >
+            <div className="name">
               <h1>{companiesData[6].name}</h1>
               {/* {companiesData[6].code} */}
             </div>
