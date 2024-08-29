@@ -115,13 +115,17 @@ const Leftdashboard = () => {
         style={{ width: "667px", height: "220px" }}
       ></div>
       <div className="stock-details">
-        <div className="market-cap">
-          <div>Market Cap. (in Cr. ₹)</div>
-          <div className="stock-data">20,46,793.32</div>
+        <div className="market-cap profit-1yr">
+          <div>Last 1 month Return (in %)</div>
+          <div className="stock-data">
+            50.62 <FaArrowUpLong />
+          </div>
         </div>
-        <div className="pe-ratio">
-          <div>PE Ratio</div>
-          <div className="stock-data">29.40</div>
+        <div className="pe-ratio profit-1yr">
+          <div>Last 6 month Return (in %)</div>
+          <div className="stock-data">
+            29.40 <FaArrowUpLong />
+          </div>
         </div>
         <div className="profit-1yr">
           <div>Last 1 year Return (in %)</div>
