@@ -50,6 +50,9 @@
 .hdfcBank {
   height: 100%;
   width: 100%;
+  align-items: center;
+  justify-content: space-evenly !important;
+  flex-direction: row !important;
   border-radius: 1vmax;
   background-color: #eaf1f3;
 }

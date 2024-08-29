@@ -132,9 +132,18 @@
 .stock-data {
   font-size: 1.2vmax;
   color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5vmax;
 }
 
 .profit-1yr .stock-data {
   color: green !important;
-  margin-bottom: 1vmax;
+}
+
+.leftArrow {
+  padding-bottom: 0.1vmax;
+  font-size: 1vmax;
+  font-weight: 900;
 }
