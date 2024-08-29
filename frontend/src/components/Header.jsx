@@ -2,7 +2,7 @@ import "./header.css";
 import { BsStars } from "react-icons/bs";
 import { FaBell } from "react-icons/fa";
 
-const Header = () => {
+const Header = ({ selectedTab, handleOnClick }) => {
   return (
     <div className="container header">
       <div className="leftSide">
@@ -11,8 +11,18 @@ const Header = () => {
           StockMarket.<span>io</span>
         </div>
         <div className="navigation">
-          <span className="navOption active">Dashboard</span>
-          <span className="navOption">Behind the Code || Code & Crew</span>
+          <span
+            className={`navOption ${selectedTab === "Dashboard" && "active"}`}
+            onClick={() => handleOnClick("Dashboard")}
+          >
+            Dashboard
+          </span>
+          <span
+            className={`navOption ${selectedTab === "About" && "active"}`}
+            onClick={() => handleOnClick("About")}
+          >
+            Behind the Code || Code & Crew
+          </span>
         </div>
       </div>
       <div className="rightSide">
