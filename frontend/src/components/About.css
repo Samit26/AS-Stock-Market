@@ -28,10 +28,13 @@ footer h1 {
 /* about part 2 */
 .aboutPart2 {
   width: 100%;
-  height: 40%;
+  height: 45%;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-top: 2px solid #888888;
+  border-bottom: 2px solid grey;
+  padding: 1.5vmax 0 0 0;
   /* background-color: darkblue; */
 }
 
@@ -41,7 +44,7 @@ footer h1 {
   width: 50%;
 }
 
-/* the creators */
+/* the creators - both creators and technologies used*/
 .creators {
   height: 15%;
 }
@@ -59,10 +62,38 @@ footer h1 {
 .akash h3,
 .samit h3 {
   font-size: 25px;
+  font-weight: 600;
   padding: 2vmax 0 0 0;
 }
 
 /* tech use */
+.techPart1,
+.gitHolder {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 1.5vmax 0;
+}
+
+.react,
+.node,
+.chartjs,
+.git,
+.github {
+  width: 33%;
+  height: 60%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 1vmax;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.chartjs {
+  width: 30% !important;
+}
 
 /* footer */
 footer {

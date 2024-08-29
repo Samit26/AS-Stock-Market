@@ -42,34 +42,38 @@ function About() {
         </div>
         <div className="techHolders">
           <h1 className="creators">Technologies Used</h1>
-          <div className="react">
-            <div className="techName">React</div>
-            <div className="techLogo">
-              <FaReact />
+          <div className="techPart1">
+            <div className="react">
+              <div className="techName">React</div>
+              <div className="techLogo">
+                <FaReact />
+              </div>
+            </div>
+            <div className="node">
+              <div className="techName">Node JS</div>
+              <div className="techLogo">
+                <FaNodeJs />
+              </div>
+            </div>
+            <div className="chartjs">
+              <div className="techName">Trading View Charts</div>
+              <div className="techLogo">
+                <SiTradingview />
+              </div>
             </div>
           </div>
-          <div className="node">
-            <div className="techName">Node JS</div>
-            <div className="techLogo">
-              <FaNodeJs />
+          <div className="gitHolder">
+            <div className="git">
+              <div className="techName">Git</div>
+              <div className="techLogo">
+                <FaGitAlt />
+              </div>
             </div>
-          </div>
-          <div className="chartjs">
-            <div className="techName">Trading View Charts</div>
-            <div className="techLogo">
-              <SiTradingview />
-            </div>
-          </div>
-          <div className="git">
-            <div className="techName">Git</div>
-            <div className="techLogo">
-              <FaGitAlt />
-            </div>
-          </div>
-          <div className="github">
-            <div className="techName">Git Hub</div>
-            <div className="techLogo">
-              <FaGithub />
+            <div className="github">
+              <div className="techName">Git Hub</div>
+              <div className="techLogo">
+                <FaGithub />
+              </div>
             </div>
           </div>
         </div>
