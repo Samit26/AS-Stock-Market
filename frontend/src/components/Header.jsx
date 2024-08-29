@@ -21,7 +21,7 @@ const Header = ({ selectedTab, handleOnClick }) => {
             className={`navOption ${selectedTab === "About" && "active"}`}
             onClick={() => handleOnClick("About")}
           >
-            Behind the Code || Code & Crew
+            Code & Crew
           </span>
         </div>
       </div>

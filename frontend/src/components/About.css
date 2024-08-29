@@ -1,8 +1,108 @@
 .aboutPage {
   height: 100%;
   width: 100%;
+  padding: 20px 2vmax 50px 2vmax;
 }
 
-h1.aboutHeading {
-  padding: 1vmax 3vmax;
+/* common css */
+h1.aboutHeading,
+h1.creators,
+footer h1 {
+  font-size: 34px;
+  color: #888888 !important;
+  font-weight: 600;
+}
+
+/* about the project */
+.aboutProject {
+  height: 25%;
+  width: 100%;
+}
+
+.aboutBio {
+  height: 20%;
+  width: 90%;
+  font-size: 15px;
+}
+
+/* about part 2 */
+.aboutPart2 {
+  width: 100%;
+  height: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: darkblue; */
+}
+
+.creatorHolder,
+.techHolders {
+  height: 100%;
+  width: 50%;
+}
+
+/* the creators */
+.creators {
+  height: 15%;
+}
+
+.samit,
+.akash {
+  height: 30%;
+  padding: 1vmax 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+}
+
+.akash h3,
+.samit h3 {
+  font-size: 25px;
+  padding: 2vmax 0 0 0;
+}
+
+/* tech use */
+
+/* footer */
+footer {
+  height: 25%;
+  width: 100%;
+  padding: 2vmax 0;
+  /* background-color: green; */
+}
+
+.socialWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.social {
+  width: 50%;
+  display: flex;
+  justify-content: flex-start;
+  gap: 1vmax;
+  align-items: center;
+  font-size: 2.5vmax;
+}
+
+.socialContainer,
+.socialContainer a {
+  height: 3.5vmax;
+  width: 3.5vmax;
+  text-decoration: none;
+  border-radius: 50%;
+  color: #0d6efd;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.socialContainer:hover {
+  border-radius: 50%;
+  box-shadow: 0 0 3px 3px #0d6efd;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-in-out;
 }
