@@ -34,6 +34,7 @@
   align-items: center;
   font-size: 32px;
   font-weight: 700;
+  width: 145px;
 }
 
 .text {
@@ -59,7 +60,7 @@
   padding-bottom: 0px;
   border-radius: 7px;
   height: 30px;
-  width: 25%;
+  width: 90px;
 }
 .price-difference-money {
   display: flex;
@@ -72,13 +73,17 @@
   padding: 10px;
   padding-top: 0px;
   height: 30px;
+<<<<<<< HEAD
   width: 25%;
+=======
+  width: 80px;
+>>>>>>> 3d3149ea4d48a5accc797e4b3ac200df6d7f693e
   padding-bottom: 0px;
   border-radius: 7px;
 }
 
 /* .moneyIcon {
-  padding-bottom: 7px;
+  font-size: 26px;
 } */
 
 .time-span {
