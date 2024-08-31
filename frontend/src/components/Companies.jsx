@@ -6,54 +6,63 @@ function Companies() {
     {
       name: "Reliance Industries LTD.",
       code: "NSE_EQ|INE002A01018",
+      stockCode: "RELIANCE",
       price: null,
       percentage: null,
     },
     {
       name: "TATA Consultancy Services LTD",
       code: "NSE_EQ|INE467B01029",
+      stockCode: "TCS",
       price: null,
       percentage: null,
     },
     {
       name: "HDFC Bank LTD",
       code: "NSE_EQ|INE040A01034",
+      stockCode: "HDFCBANK",
       price: null,
       percentage: null,
     },
     {
       name: "Bharti Airtel LTD",
       code: "NSE_EQ|INE397D01024",
+      stockCode: "BHARTIARTL",
       price: null,
       percentage: null,
     },
     {
       name: "ICICI Bank LTD",
       code: "NSE_EQ|INE090A01021",
+      stockCode: "ICICIBANK",
       price: null,
       percentage: null,
     },
     {
       name: "Infosys LTD",
       code: "NSE_EQ|INE009A01021",
+      stockCode: "INFY",
       price: null,
       percentage: null,
     },
     {
       name: "STATE BANK OF INDIA",
       code: "NSE_EQ|INE062A01020",
+      stockCode: "SBIN",
       price: null,
       percentage: null,
     },
     {
       name: "Hindustan Unilever LTD",
       code: "NSE_EQ|INE030A01027",
+      stockCode: "HINDUNILVR",
       price: null,
       percentage: null,
     },
     {
       name: "Canara Bank LTD",
       code: "NSE_EQ|INE476A01022",
+      stockCode: "CANBK",
       price: null,
       percentage: null,
     },
@@ -161,7 +170,7 @@ function Companies() {
         >
           <div className="name">
             <h1>{companiesData[0].name}</h1>
-            {/* {companiesData[0].code} */}
+            {companiesData[0].stockCode}
           </div>
           <div className="price-right">
             {companiesData[0].price}
@@ -177,7 +186,7 @@ function Companies() {
         >
           <div className="name">
             <h1>{companiesData[1].name}</h1>
-            {/* {companiesData[1].code} */}
+            {companiesData[1].stockCode}
           </div>
           <div className="price-right">
             {companiesData[1].price}
@@ -196,7 +205,7 @@ function Companies() {
           >
             <div className="name">
               <h1>{companiesData[2].name}</h1>
-              {/* {companiesData[2].code} */}
+              {companiesData[2].stockCode}
             </div>
             <div className="price-right">
               {companiesData[2].price}
@@ -214,7 +223,7 @@ function Companies() {
           >
             <div className="name">
               <h1>{companiesData[3].name}</h1>
-              {/* {companiesData[3].code} */}
+              {companiesData[3].stockCode}
             </div>
             <div className="price-right">
               {companiesData[3].price}
@@ -230,7 +239,7 @@ function Companies() {
           >
             <div className="name">
               <h1>{companiesData[4].name}</h1>
-              {/* {companiesData[4].code} */}
+              {companiesData[4].stockCode}
             </div>
             <div className="price-right">
               {companiesData[4].price}
@@ -248,7 +257,7 @@ function Companies() {
           >
             <div className="name">
               <h1>{companiesData[5].name}</h1>
-              {/* {companiesData[5].code} */}
+              {companiesData[5].stockCode}
             </div>
             <div className="price-right">
               {companiesData[5].price}
@@ -264,7 +273,7 @@ function Companies() {
           >
             <div className="name">
               <h1>{companiesData[6].name}</h1>
-              {/* {companiesData[6].code} */}
+              {companiesData[6].stockCode}
             </div>
             <div className="price-right">
               {companiesData[6].price}
@@ -280,7 +289,7 @@ function Companies() {
           >
             <div className="name">
               <h1>{companiesData[7].name}</h1>
-              {/* {companiesData[7].code} */}
+              {companiesData[7].stockCode}
             </div>
             <div className="price-right">
               {companiesData[7].price}

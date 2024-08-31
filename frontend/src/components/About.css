@@ -1,0 +1,140 @@
+.aboutPage {
+  height: 100%;
+  width: 100%;
+  padding: 20px 2vmax 50px 2vmax;
+}
+
+/* common css */
+h1.aboutHeading,
+h1.creators,
+footer h1 {
+  font-size: 34px;
+  color: #888888 !important;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+/* about the project */
+.aboutProject {
+  height: 25%;
+  width: 100%;
+}
+
+.aboutBio {
+  height: 20%;
+  width: 90%;
+  font-size: 15px;
+}
+
+/* about part 2 */
+.aboutPart2 {
+  width: 100%;
+  height: 45%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 2px solid #888888;
+  border-bottom: 2px solid grey;
+  padding: 1.5vmax 0 0 0;
+  /* background-color: darkblue; */
+}
+
+.creatorHolder,
+.techHolders {
+  height: 100%;
+  width: 50%;
+}
+
+/* the creators - both creators and technologies used*/
+.creators {
+  height: 15%;
+}
+
+.samit,
+.akash {
+  height: 30%;
+  padding: 1vmax 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+}
+
+.akash h3,
+.samit h3 {
+  font-size: 25px;
+  font-weight: 600;
+  padding: 2vmax 0 0 0;
+}
+
+/* tech use */
+.techPart1,
+.gitHolder {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 1.5vmax 0;
+}
+
+.react,
+.node,
+.chartjs,
+.git,
+.github {
+  width: 33%;
+  height: 60%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 1vmax;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.chartjs {
+  width: 30% !important;
+}
+
+/* footer */
+footer {
+  height: 25%;
+  width: 100%;
+  padding: 2vmax 0;
+  /* background-color: green; */
+}
+
+.socialWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.social {
+  width: 50%;
+  display: flex;
+  justify-content: flex-start;
+  gap: 1vmax;
+  align-items: center;
+  font-size: 2.5vmax;
+}
+
+.socialContainer,
+.socialContainer a {
+  height: 3.5vmax;
+  width: 3.5vmax;
+  text-decoration: none;
+  border-radius: 50%;
+  color: #0d6efd;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.socialContainer:hover {
+  border-radius: 50%;
+  box-shadow: 0 0 3px 3px #0d6efd;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-in-out;
+}
