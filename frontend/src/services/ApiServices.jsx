@@ -1,5 +1,5 @@
 import { createContext, useEffect, useReducer, useState } from "react";
-
+// writing some huge comments
 export const ApiData = createContext();
 
 const dataReducer = (chartData, action) => {
