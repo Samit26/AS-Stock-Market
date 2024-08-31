@@ -27,6 +27,11 @@ const ApiDataProvider = ({ children }) => {
   const [latestPrice, setLatestPrice] = useState(null);
   const [stockChange, setStockChange] = useState("NSE_EQ|INE476A01022");
   const [stockName, setStockName] = useState("Canara Bank");
+  // const [stockReturns, setStockReturns] = useState({
+  //   month: null,
+  //   threeMonth: null,
+  //   year: null,
+  // });
 
   useEffect(() => {
     if (marketOpenPrice != null && latestPrice != null) {
@@ -142,7 +147,109 @@ const ApiDataProvider = ({ children }) => {
         // console.log(data4);
         setMarketOpenPrice(data4);
       });
-  }, [stockChange, marketOpenPrice]);
+  }, [stockChange, marketOpenPrice, latestPrice]);
+
+  // useEffect(() => {
+  //   if (stockReturns.month === null) {
+  //     const yesterday = () => {
+  //       let d = new Date();
+  //       d.setDate(d.getDate() - 1);
+  //       return d;
+  //     };
+  //     const y = yesterday().toISOString().split("T")[0];
+  //     const fromMonth = () => {
+  //       let d = new Date();
+  //       d.setDate(d.getDate() - 30);
+  //       return d;
+  //     };
+  //     const fm = fromMonth().toISOString().split("T")[0];
+
+  //     fetch(
+  //       `https://api.upstox.com/v2/historical-candle/${stockChange}/day/${y}/${fm}`
+  //     )
+  //       .then((res) => res.json())
+  //       .then((data1) => {
+  //         const data2 = data1.data.candles;
+  //         const data3 = data2.sort((a, b) => new Date(a[0]) - new Date(b[0]));
+
+  //         const data4 = data3[0][4];
+  //         // console.log(
+  //         //   `from date: ${fm}, 1 month  before close price: ${data4}, latest price : ${latestPrice}`
+  //         // );
+  //         const data5 = ((latestPrice - data4) / data4) * 100;
+  //         setStockReturns({ ...stockReturns, month: `${data5.toFixed(2)}` });
+  //       });
+  //   }
+  // }, [stockChange, latestPrice]);
+
+  // useEffect(() => {
+  //   if (stockReturns.threeMonth === null) {
+  //     const yesterday = () => {
+  //       let d = new Date();
+  //       d.setDate(d.getDate() - 1);
+  //       return d;
+  //     };
+  //     const y = yesterday().toISOString().split("T")[0];
+  //     const fromThreeMonth = () => {
+  //       let d = new Date();
+  //       d.setDate(d.getDate() - 185);
+  //       return d;
+  //     };
+  //     const ftm = fromThreeMonth().toISOString().split("T")[0];
+
+  //     fetch(
+  //       `https://api.upstox.com/v2/historical-candle/${stockChange}/week/${y}/${ftm}`
+  //     )
+  //       .then((res) => res.json())
+  //       .then((data1) => {
+  //         const data2 = data1.data.candles;
+  //         const data3 = data2.sort((a, b) => new Date(a[0]) - new Date(b[0]));
+
+  //         const data4 = data3[0][4];
+  //         // console.log(
+  //         //   `from date: ${fm}, 1 month  before close price: ${data4}, latest price : ${latestPrice}`
+  //         // );
+  //         const data5 = ((latestPrice - data4) / data4) * 100;
+  //         setStockReturns({
+  //           ...stockReturns,
+  //           threeMonth: `${data5.toFixed(2)}`,
+  //         });
+  //       });
+  //   }
+  // }, [stockChange, latestPrice]);
+
+  // useEffect(() => {
+  //   if (stockReturns.year === null) {
+  //     const yesterday = () => {
+  //       let d = new Date();
+  //       d.setDate(d.getDate() - 1);
+  //       return d;
+  //     };
+  //     const y = yesterday().toISOString().split("T")[0];
+  //     const fromYear = () => {
+  //       let d = new Date();
+  //       d.setDate(d.getDate() - 365);
+  //       return d;
+  //     };
+  //     const fy = fromYear().toISOString().split("T")[0];
+
+  //     fetch(
+  //       `https://api.upstox.com/v2/historical-candle/${stockChange}/month/${y}/${fy}`
+  //     )
+  //       .then((res) => res.json())
+  //       .then((data1) => {
+  //         const data2 = data1.data.candles;
+  //         const data3 = data2.sort((a, b) => new Date(a[0]) - new Date(b[0]));
+
+  //         const data4 = data3[0][4];
+  //         console.log(
+  //           `from date: ${fy}, 12 month  before close price: ${data4}, latest price : ${latestPrice}`
+  //         );
+  //         const data5 = ((latestPrice - data4) / data4) * 100;
+  //         setStockReturns({ ...stockReturns, year: `${data5.toFixed(2)}` });
+  //       });
+  //   }
+  // }, [stockChange, latestPrice]);
 
   useEffect(() => {
     fetch(
@@ -275,6 +382,7 @@ const ApiDataProvider = ({ children }) => {
         setStockChange,
         setStockName,
         stockName,
+        // stockReturns,
       }}
     >
       {children}

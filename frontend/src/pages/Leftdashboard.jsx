@@ -21,6 +21,7 @@ const Leftdashboard = () => {
     marketOpenPriceX,
     latestPrice,
     stockName,
+    stockReturns,
   } = useContext(ApiData);
 
   useEffect(() => {
@@ -118,19 +119,19 @@ const Leftdashboard = () => {
         <div className="market-cap profit-1yr">
           <div>Last 1 month Return (in %)</div>
           <div className="stock-data">
-            50.62 <FaArrowUpLong />
+            {stockReturns.month} <FaArrowUpLong />
           </div>
         </div>
         <div className="pe-ratio profit-1yr">
           <div>Last 6 month Return (in %)</div>
           <div className="stock-data">
-            29.40 <FaArrowUpLong />
+            {stockReturns.threeMonth} <FaArrowUpLong />
           </div>
         </div>
         <div className="profit-1yr">
           <div>Last 1 year Return (in %)</div>
           <div className="stock-data">
-            22.80 <FaArrowUpLong />
+            {stockReturns.year} <FaArrowUpLong />
           </div>
         </div>
       </div>
