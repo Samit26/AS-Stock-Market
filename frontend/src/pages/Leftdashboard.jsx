@@ -2,7 +2,7 @@ import "./leftdashboard.css";
 import { useContext, useEffect, useRef } from "react";
 import { createChart } from "lightweight-charts";
 import { FaRupeeSign } from "react-icons/fa";
-// import { FaArrowUpLong } from "react-icons/fa6";
+import { FaArrowUpLong } from "react-icons/fa6";
 import {
   MdOutlineKeyboardDoubleArrowUp,
   MdOutlineKeyboardDoubleArrowDown,
@@ -120,7 +120,7 @@ const Leftdashboard = () => {
           <div>Last 1 month Return (in %)</div>
           <div className="stock-data">
             22.80 <FaArrowUpLong className="leftArrow" />
-            {stockReturns.month} <FaArrowUpLong />
+            {/* {stockReturns.month} <FaArrowUpLong /> */}
           </div>
         </div>
         <div className="pe-ratio">
@@ -128,18 +128,17 @@ const Leftdashboard = () => {
           <div className="stock-data">
             29.40
             <FaArrowUpLong className="leftArrow" />
-            {stockReturns.threeMonth} <FaArrowUpLong />
+            {/* {stockReturns.threeMonth} <FaArrowUpLong /> */}
           </div>
         </div>
         <div className="profit-1yr">
           <div>1 year return (in %)</div>
           <div className="stock-data">
             22.80 <FaArrowUpLong className="leftArrow" />
-            {stockReturns.year} <FaArrowUpLong />
+            {/* {stockReturns.year} <FaArrowUpLong /> */}
           </div>
         </div>
       </div>{" "}
-      */}
     </>
   );
 };
