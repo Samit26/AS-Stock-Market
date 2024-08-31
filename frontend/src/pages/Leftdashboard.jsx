@@ -2,7 +2,7 @@ import "./leftdashboard.css";
 import { useContext, useEffect, useRef } from "react";
 import { createChart } from "lightweight-charts";
 import { FaRupeeSign } from "react-icons/fa";
-import { FaArrowUpLong } from "react-icons/fa6";
+// import { FaArrowUpLong } from "react-icons/fa6";
 import {
   MdOutlineKeyboardDoubleArrowUp,
   MdOutlineKeyboardDoubleArrowDown,
@@ -21,7 +21,7 @@ const Leftdashboard = () => {
     marketOpenPriceX,
     latestPrice,
     stockName,
-    stockReturns,
+    // stockReturns,
   } = useContext(ApiData);
 
   useEffect(() => {
@@ -115,7 +115,7 @@ const Leftdashboard = () => {
         ref={firstChartContainerRef}
         style={{ width: "667px", height: "220px" }}
       ></div>
-      <div className="stock-details">
+      {/* <div className="stock-details">
         <div className="market-cap profit-1yr">
           <div>Last 1 month Return (in %)</div>
           <div className="stock-data">
@@ -134,7 +134,7 @@ const Leftdashboard = () => {
             {stockReturns.year} <FaArrowUpLong />
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };
